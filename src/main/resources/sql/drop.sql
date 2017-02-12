@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS xml_entry;
+DROP SEQUENCE IF EXISTS xml_entry_id;
