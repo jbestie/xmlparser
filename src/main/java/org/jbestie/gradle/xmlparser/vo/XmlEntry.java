@@ -21,7 +21,7 @@ public class XmlEntry {
     @Column(name="xml_content", length = 1024)
     String content;
 
-    @Column(name="file_name", nullable=false)
+    @Column(name="creation_date", nullable=false)
     Timestamp creationDate;
 
     public XmlEntry() {
