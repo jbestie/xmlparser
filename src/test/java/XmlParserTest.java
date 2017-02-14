@@ -1,9 +1,11 @@
 import org.jbestie.gradle.xmlparser.service.XmlEntryService;
+import org.jbestie.gradle.xmlparser.utils.HibernateUtils;
 import org.jbestie.gradle.xmlparser.vo.XmlEntry;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 
 /**
  * Created by bestie on 12.02.2017.
@@ -12,6 +14,10 @@ import java.sql.Timestamp;
 public class XmlParserTest {
 
     private final static XmlEntryService xmlEntryService = new XmlEntryService();
+    static {
+        HibernateUtils.initializeSessionFactoryConfig(new HashMap<>());
+    }
+
 
     @Test
     public void testCreateAndDeleteRecords() {

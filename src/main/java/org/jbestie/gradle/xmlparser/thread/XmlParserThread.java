@@ -66,7 +66,7 @@ public class XmlParserThread implements Runnable {
                 document = parser.parse(xmlFile);
                 xmlValidator.validate(new DOMSource(document));
             } catch (Exception ex) {
-                String failedDirectory = configuration.get(ApplicationConstants.XML_FAILED_PARAMETER_NAME);
+                String failedDirectory = configuration.get(ApplicationConstants.CONFIG_XML_FAILED_DIR);
                 xmlFile.renameTo(new File(failedDirectory + File.separator + xmlFile.getName()));
                 logger.warn(ex.getMessage());
                 continue;
@@ -94,12 +94,12 @@ public class XmlParserThread implements Runnable {
                     entryService.createEntry(entry);
                 } catch (ParseException e) {
                     logger.error(e.getMessage());
-                    String failedDirectory = configuration.get(ApplicationConstants.XML_FAILED_PARAMETER_NAME);
+                    String failedDirectory = configuration.get(ApplicationConstants.CONFIG_XML_FAILED_DIR);
                     xmlFile.renameTo(new File(failedDirectory + File.separator + xmlFile.getName()));
                     continue;
                 } catch (RuntimeException ex) {
                     logger.error(ex.getMessage());
-                    String failedDirectory = configuration.get(ApplicationConstants.XML_FAILED_PARAMETER_NAME);
+                    String failedDirectory = configuration.get(ApplicationConstants.CONFIG_XML_FAILED_DIR);
                     xmlFile.renameTo(new File(failedDirectory + File.separator + xmlFile.getName()));
                     continue;
                 }
@@ -107,7 +107,7 @@ public class XmlParserThread implements Runnable {
             }
 
             // move to processed
-            String destinationDirectory = configuration.get(ApplicationConstants.XML_DST_PARAMETER_NAME);
+            String destinationDirectory = configuration.get(ApplicationConstants.CONFIG_XML_DST_DIR);
             xmlFile.renameTo(new File(destinationDirectory + File.separator + xmlFile.getName()));
 
             logger.debug("File " + xmlFile.getName() + " successfully processed");

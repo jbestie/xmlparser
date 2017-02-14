@@ -2,8 +2,6 @@ package org.jbestie.gradle.xmlparser.service;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.jbestie.gradle.xmlparser.utils.HibernateUtils;
 import org.jbestie.gradle.xmlparser.vo.XmlEntry;
 

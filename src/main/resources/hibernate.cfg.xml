@@ -4,10 +4,10 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.username">user</property>
-        <property name="connection.password">12345</property>
+        <property name="connection.url"/>
+        <property name="connection.username"/>
+        <property name="connection.password"/>
 
         <property name="show_sql">false</property>
 
@@ -20,8 +20,6 @@
         <property name="hibernate.c3p0.max_statements">10</property>
         <property name="hibernate.c3p0.idle_test_period">3000</property>
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
         <mapping class="org.jbestie.gradle.xmlparser.vo.XmlEntry"/>
     </session-factory>
 </hibernate-configuration>
