@@ -14,6 +14,8 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -31,6 +33,7 @@ public class XmlParserApplication {
     private static Map<String, String> configuration = new HashMap<>();
 
     public static void main(String[] args) {
+        Instant start = Instant.now();
 
         validatePath(ApplicationConstants.XML_SRC_PARAMETER_NAME);
         validatePath(ApplicationConstants.XML_DST_PARAMETER_NAME);
@@ -50,24 +53,31 @@ public class XmlParserApplication {
             logger.debug("Adding file " + file.getName() + " to process queue");
         }
 
-        ExecutorService service = Executors.newFixedThreadPool(10);
+        int numberOfThreads = 8;
 
-        if (fileStack.size() / 10 == 0) {
-            service.submit(new XmlParserThread(fileStack, createValidator(), configuration, 1));
-        } else {
-            for (int i = 0; i < 10; i++) {
-                service.submit(new XmlParserThread(fileStack, createValidator(), configuration, i));
-            }
+        ExecutorService service = Executors.newFixedThreadPool(numberOfThreads);
+
+
+        for (int i = 0; i < numberOfThreads; i++) {
+            service.submit(new XmlParserThread(fileStack, createValidator(), configuration, i));
         }
 
+
         service.shutdown();
+
         try {
-            service.awaitTermination(1, TimeUnit.MINUTES);
+            service.awaitTermination(2, TimeUnit.HOURS);
         } catch (InterruptedException ie) {
             service.shutdownNow();
         }
 
-        HibernateUtils.getSessionFactory().close();
+
+        Instant end = Instant.now();
+        logger.info("We done in " + Duration.between(start,end));
+
+        if (service.isShutdown()) {
+            HibernateUtils.getSessionFactory().close();
+        }
     }
 
 
