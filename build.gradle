@@ -6,17 +6,28 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+
+
+// copy run scripts
+task('copyScripts', type: Copy) {
+    from 'scripts'
+    into 'build/application'
+}
+
+
 //create a single Jar with all dependencies
 jar {
+    destinationDir = file("build/application")
     manifest {
         attributes 'Implementation-Title': 'XmlParser implementation',
                 'Implementation-Version': version,
                 'Main-Class': 'org.jbestie.gradle.xmlparser.XmlParserApplication'
     }
-    
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    tasks['copyScripts'].execute()
 }
+
 
 repositories {
     mavenCentral()
