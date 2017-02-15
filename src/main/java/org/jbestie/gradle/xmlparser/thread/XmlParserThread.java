@@ -58,7 +58,7 @@ public class XmlParserThread implements Runnable {
                 continue;
             }
 
-            Document document = null;
+            Document document;
             try {
                 // read XML file
                 logger.debug("Processing " + xmlFile.getName());
