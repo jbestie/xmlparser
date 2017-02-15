@@ -7,7 +7,7 @@ import org.hibernate.cfg.Environment;
 import java.util.Map;
 
 /**
- * Created by bestie on 13.02.2017.
+ * Utils to create {@link SessionFactory} factory for DB connections
  */
 public final class HibernateUtils {
     private HibernateUtils(){}
@@ -28,9 +28,19 @@ public final class HibernateUtils {
 
                 if (sessionFactory == null) {
                     Configuration configuration = new Configuration().configure();
-                    configuration.setProperty(Environment.URL, applicationConfiguration.get(ApplicationConstants.CONFIG_CONNECTION_URL));
-                    configuration.setProperty(Environment.USER, applicationConfiguration.get(ApplicationConstants.CONFIG_CONNECTION_USERNAME));
-                    configuration.setProperty(Environment.PASS, applicationConfiguration.get(ApplicationConstants.CONFIG_CONNECTION_PASSWORD));
+
+                    // dumb check incoming config map just to make tests alive :(
+                    if (applicationConfiguration.containsKey(ApplicationConstants.CONFIG_CONNECTION_URL)) {
+                        configuration.setProperty(Environment.URL, applicationConfiguration.get(ApplicationConstants.CONFIG_CONNECTION_URL));
+                    }
+
+                    if (applicationConfiguration.containsKey(ApplicationConstants.CONFIG_CONNECTION_USERNAME)) {
+                        configuration.setProperty(Environment.USER, applicationConfiguration.get(ApplicationConstants.CONFIG_CONNECTION_USERNAME));
+                    }
+
+                    if  (applicationConfiguration.containsKey(ApplicationConstants.CONFIG_CONNECTION_PASSWORD)) {
+                        configuration.setProperty(Environment.PASS, applicationConfiguration.get(ApplicationConstants.CONFIG_CONNECTION_PASSWORD));
+                    }
 
                     sessionFactory = configuration.buildSessionFactory();
                 }

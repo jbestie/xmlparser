@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by bestie on 12.02.2017.
+ * Xml entry
  */
 @Entity
 @Table(name = "xml_entry")

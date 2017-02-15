@@ -22,13 +22,13 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * Created by bestie on 13.02.2017.
+ * Thread to parse incoming xml and put it to DB
  */
 public class XmlParserThread implements Runnable {
-    public static final String ROOT_ELEMENT = "Entry";
-    public static final String CONTENT_ELEMENT = "content";
-    public static final String CREATION_DATE = "creationDate";
-    public static final String DATE_XML_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String ROOT_ELEMENT = "Entry";
+    private static final String CONTENT_ELEMENT = "content";
+    private static final String CREATION_DATE = "creationDate";
+    private static final String DATE_XML_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private final Map<String, String> configuration;
     private Validator xmlValidator;
     private final Integer threadId;
@@ -48,13 +48,13 @@ public class XmlParserThread implements Runnable {
     public void run() {
         logger.debug(" Started thread " + threadId);
         while (filesQueue.size() > 0) {
-            File xmlFile = null;
+            File xmlFile;
             synchronized (filesQueue) {
                 xmlFile = filesQueue.pop();
             }
 
-            if (xmlFile == null || !xmlFile.exists()) {
-                logger.warn("File " + xmlFile.getName() + " doesn't exist");
+            if (xmlFile == null || !xmlFile.exists() ) {
+                logger.warn("File " + (xmlFile == null ? "" : xmlFile.getName()) + " doesn't exist");
                 continue;
             }
 
@@ -85,7 +85,7 @@ public class XmlParserThread implements Runnable {
                 String date = eElement.getElementsByTagName(CREATION_DATE).item(0).getTextContent();
                 SimpleDateFormat formatter = new SimpleDateFormat(DATE_XML_FORMAT);
 
-                Timestamp creationDate = null;
+                Timestamp creationDate;
                 try {
                     creationDate = new Timestamp(formatter.parse(date).getTime());
                     XmlEntry entry = new XmlEntry(xmlFile.getName(), content, creationDate);

@@ -6,12 +6,12 @@ import org.jbestie.gradle.xmlparser.utils.HibernateUtils;
 import org.jbestie.gradle.xmlparser.vo.XmlEntry;
 
 /**
- * Created by bestie on 12.02.2017.
+ * Service layer to deal with DB
  */
 
 public class XmlEntryService {
 
-    final Logger logger = Logger.getLogger(XmlEntryService.class);
+    private final Logger logger = Logger.getLogger(XmlEntryService.class);
 
     public Long createEntry(XmlEntry entry) {
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -35,7 +35,7 @@ public class XmlEntryService {
 
 
     public XmlEntry getEntry(Long id) {
-        XmlEntry result = null;
+        XmlEntry result;
 
         Session session = HibernateUtils.getSessionFactory().openSession();
         logger.debug("Attempt to get entry with id = " + id);

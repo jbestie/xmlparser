@@ -7,18 +7,16 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by bestie on 13.02.2017.
+ * Generates the xml files in specified directory
  */
 public class XmlFilesGenerator {
     public static void main(String[] args) {
@@ -36,7 +34,7 @@ public class XmlFilesGenerator {
 
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = null;
+        DocumentBuilder docBuilder;
         try {
             docBuilder = docFactory.newDocumentBuilder();
             int desiredQuantity = 1000000;
@@ -64,13 +62,8 @@ public class XmlFilesGenerator {
                 StreamResult result = new StreamResult(new File(srcDirectory + File.separator + i + ".xml"));
                 transformer.transform(source, result);
             }
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
+        } catch (ParserConfigurationException | TransformerException e) {
             e.printStackTrace();
         }
-
     }
 }

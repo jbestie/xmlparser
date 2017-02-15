@@ -24,6 +24,8 @@ c. Copy application directory wherever you want, go into dir and start runMe-scr
 1.2 Installation of already built application
 a. Just copy application-directory wherever you want and start runMe-script sh/bat - depends on your platform
 
+Also you should have defined the JAVA_HOME variable in your environment, have permissions to specified folders and feel good.
+
 === 2. CONFIGURE APPLICATION TO START ===
 Application provides the clean help output and still if you don't like to read output in console (like me) 
 here you are the basic configuration parameters:

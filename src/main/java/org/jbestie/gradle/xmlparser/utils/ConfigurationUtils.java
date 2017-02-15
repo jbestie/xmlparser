@@ -185,7 +185,7 @@ public final class ConfigurationUtils {
     /**
      * Performs the validation that all required fields are in map
      *
-     * @param applicationConfig
+     * @param applicationConfig - incoming configuration
      */
     private static void performLastValidationCheck(Map<String, String> applicationConfig) {
         if (!applicationConfig.containsKey(ApplicationConstants.CONFIG_XML_SRC_DIR)) {
@@ -215,7 +215,7 @@ public final class ConfigurationUtils {
      */
     private static Integer validateMaxProcCount(String value) {
 
-        Integer numberOfThreads = 4;
+        Integer numberOfThreads;
 
         try {
             numberOfThreads = Integer.parseInt(value);
@@ -268,6 +268,11 @@ public final class ConfigurationUtils {
     }
 
 
+    /**
+     * Generates the help file output
+     *
+     * @return {@link String} with help
+     */
     public static String generateHelpFile() {
         StringBuffer buffer = new StringBuffer();
 

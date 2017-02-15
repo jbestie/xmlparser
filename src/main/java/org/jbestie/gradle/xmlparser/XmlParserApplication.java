@@ -57,9 +57,14 @@ public class XmlParserApplication {
 
             // push all files to stack
             Stack<File> fileStack = new Stack<>();
-            for (File file : sourceDirectory.listFiles()) {
-                fileStack.push(file);
-                logger.debug("Adding file " + file.getName() + " to process queue");
+            File[] files = sourceDirectory.listFiles();
+            if (files != null) {
+                for (File file :files) {
+                    fileStack.push(file);
+                    logger.debug("Adding file " + file.getName() + " to process queue");
+                }
+            } else {
+                logger.info("Source folder is empty");
             }
 
             // check the desired quantity of threads
@@ -87,11 +92,14 @@ public class XmlParserApplication {
             // end of thread
         }, 0, monitoringPeriod, TimeUnit.SECONDS);
 
-        // TODO: deal with session factory
-//        HibernateUtils.getSessionFactory().close();
     }
 
 
+    /**
+     * Creates the validator to validate incoming xml file.
+     *
+     * @return {@link Validator} for xml validation
+     */
     private static Validator createValidator() {
         // create a SchemaFactory capable of understanding WXS schemas
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
