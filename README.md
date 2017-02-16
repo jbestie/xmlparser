@@ -1,8 +1,9 @@
 # README STRUCTURE
 0. Introduction
-1. Installation guide
-2. Configure application to start
-3. Issues, tips & tricks 
+1. System requirements
+2. Installation guide
+3. Configure application to start
+4. Issues, tips & tricks 
 
 
 ## 0. INTRODUCTION
@@ -15,20 +16,31 @@ So if you would like to try it - go ahead!
 
 Special thanks to my MKYoung, Google, documentation and StackOverflow. Thanks a lot!
 
-## 1. INSTALLATION GUIDE
-### 1.1 Installation from source
+
+## 1. System requirements
+- JDK 8 installed in system
+- PostgreSQL 9.4 or newer
+- Windows 7 or newer / GNU Linux compatible system
+
+
+## 2. INSTALLATION GUIDE
+### 2.1 Installation from source
 * Checkout the Project from GitHub
 * Run Gradle task "jar" like 
-  > gradle jar
+  ``` gradle jar```
+  or 
+  ```gradlew jar```
+   
 * Voila! You have **application** directory in build-one.
 * Copy application directory wherever you want, go into dir and start runMe-script (depends on your platform)
 
-### 1.2 Installation of already built application
+### 2.2 Installation of already built application
 * Just copy application-directory wherever you want and start runMe-script sh/bat - depends on your platform
 
-**NB!** You should have defined the **JAVA_HOME** variable in your environment, have permissions to specified directories and feel good.
+### 2.3 Create the required structure in DB
+Run the create.sql script on desired PostgreSQL instance
 
-## 2. CONFIGURE APPLICATION TO START
+## 3. CONFIGURE APPLICATION TO START
 Application provides the clean help output and still if you don't like to read output in console (like me) 
 here you are the basic configuration parameters:
 
@@ -41,7 +53,7 @@ here you are the basic configuration parameters:
 **NB!** You can specify and parameters and config BUT! Config file has highest priority so will be used instead of other parameters. Keep this in mind!
 
  Here you are the example of config file:
->connection.url=jdbc:postgresql://localhost:5432/postgres
+```connection.url=jdbc:postgresql://localhost:5432/postgres
 connection.username=my_user
 connection.password=my_password
 config.src=D:/temp/src
@@ -49,7 +61,7 @@ config.dst=D:/temp/dst
 config.failed=D:/temp/failed
 config.threads=8
 config.period=60
-
+```
 Feel free to specify threads quantity from 1 to 8. If you will break out this range then this awesome smart application will correct quantity to 4.
 
 
@@ -60,7 +72,7 @@ The structure of incoming XML file is similar to this
 	<creationDate>2014-01-01 00:00:00</creationDate> 
 </Entry>
 ```
-## 3. ISSUES, TIPS AND TRICKS 
+## 4. ISSUES, TIPS AND TRICKS 
 * If you struggle with run-scripts without any luck then you can just run application like
 > java -jar xmlparser-1.0-SNAPSHOT.jar --program_parameters
 
