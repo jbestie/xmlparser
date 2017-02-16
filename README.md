@@ -1,11 +1,11 @@
-README STRUCTURE
+# README STRUCTURE
 0. Introduction
 1. Installation guide
 2. Configure application to start
 3. Issues, tips & tricks 
 
 
-==== 0. INTRODUCTION ===
+## 0. INTRODUCTION
 If you read this that means you want to try the XmlParser in action!
 XmlParser is open-source project based on JDK 8 and Gradle technologies.
 Last version always is available on GitHub: 
@@ -13,7 +13,7 @@ Last version always is available on GitHub:
 Shortly the main idea is to just burn your CPU with tons of XML files and other stuff as soon as possible.
 So if you would like to try it - go ahead!
 
-=== 1. INSTALLATION GUIDE ===
+## 1. INSTALLATION GUIDE
 1.1 Installation from source
 a. Checkout the Project from GitHub
 b. Run Gradle task "jar" like 
@@ -26,7 +26,7 @@ a. Just copy application-directory wherever you want and start runMe-script sh/b
 
 Also you should have defined the JAVA_HOME variable in your environment, have permissions to specified folders and feel good.
 
-=== 2. CONFIGURE APPLICATION TO START ===
+## 2. CONFIGURE APPLICATION TO START
 Application provides the clean help output and still if you don't like to read output in console (like me) 
 here you are the basic configuration parameters:
 
@@ -51,7 +51,7 @@ config.period=60
 Feel free to specify threads quantity from 1 to 8. If you will break out this range then this awesome smart application will correct quantity to 4.
 
 
-=== 3. ISSUES, TIPS AND TRICKS ===
+## 3. ISSUES, TIPS AND TRICKS 
 If you struggle with run-scripts then you can just run application like
    java -jar xmlparser-1.0-SNAPSHOT.jar blah-blah
 
