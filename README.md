@@ -8,23 +8,25 @@
 ## 0. INTRODUCTION
 If you read this that means you want to try the XmlParser in action!
 XmlParser is open-source project based on JDK 8 and Gradle technologies.
-Last version always is available on GitHub: 
+Last version always is available on GitHub here! 
 
 Shortly the main idea is to just burn your CPU with tons of XML files and other stuff as soon as possible.
 So if you would like to try it - go ahead!
 
+Special thanks to my MKYoung, Google, documentation and StackOverflow. Thanks a lot!
+
 ## 1. INSTALLATION GUIDE
-1.1 Installation from source
+### 1.1 Installation from source
 * Checkout the Project from GitHub
 * Run Gradle task "jar" like 
   > gradle jar
 * Voila! You have **application** directory in build-one.
 * Copy application directory wherever you want, go into dir and start runMe-script (depends on your platform)
 
-1.2 Installation of already built application
-a. Just copy application-directory wherever you want and start runMe-script sh/bat - depends on your platform
+### 1.2 Installation of already built application
+* Just copy application-directory wherever you want and start runMe-script sh/bat - depends on your platform
 
-Also you should have defined the **JAVA_HOME** variable in your environment, have permissions to specified folders and feel good.
+**NB!** You should have defined the **JAVA_HOME** variable in your environment, have permissions to specified directories and feel good.
 
 ## 2. CONFIGURE APPLICATION TO START
 Application provides the clean help output and still if you don't like to read output in console (like me) 
@@ -52,10 +54,10 @@ Feel free to specify threads quantity from 1 to 8. If you will break out this ra
 
 
 ## 3. ISSUES, TIPS AND TRICKS 
-If you struggle with run-scripts without any luck then you can just run application like
+* If you struggle with run-scripts without any luck then you can just run application like
 > java -jar xmlparser-1.0-SNAPSHOT.jar --program_parameters
 
-If you have other issues please contact me.
+* If you have other issues please contact me.
 
 Have fun!
 
