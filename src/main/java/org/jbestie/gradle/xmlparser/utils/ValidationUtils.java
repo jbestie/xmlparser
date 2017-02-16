@@ -19,8 +19,8 @@ public class ValidationUtils {
     // dumb compressed xsd schema because of some issues with xsd-file in jar :(
     private static String XSD_SCHEMA = "<xs:schema attributeFormDefault=\"unqualified\" elementFormDefault=\"qualified\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n" +
             "<xs:element name=\"Entry\"><xs:complexType><xs:sequence><xs:element type=\"xs:string\" name=\"content\">" +
-            "<xs:annotation><xs:documentation>строка длиной до 1024 символов</xs:documentation></xs:annotation>" +
-            "</xs:element><xs:element type=\"xs:string\" name=\"creationDate\"><xs:annotation><xs:documentation>дата создания записи</xs:documentation>\n" +
+            "<xs:annotation><xs:documentation>String with length less or equal 1024 chars</xs:documentation></xs:annotation>" +
+            "</xs:element><xs:element type=\"xs:string\" name=\"creationDate\"><xs:annotation><xs:documentation>Creation date of record</xs:documentation>\n" +
             "</xs:annotation></xs:element></xs:sequence></xs:complexType></xs:element></xs:schema>";
 
     /**

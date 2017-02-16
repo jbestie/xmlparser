@@ -11,6 +11,7 @@ targetCompatibility = 1.8
 // copy run scripts
 task('copyScripts', type: Copy) {
     from 'scripts'
+    from 'src/main/resources/sql'
     into 'build/application'
 }
 
