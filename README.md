@@ -53,6 +53,13 @@ config.period=60
 Feel free to specify threads quantity from 1 to 8. If you will break out this range then this awesome smart application will correct quantity to 4.
 
 
+The structure of incoming XML file is similar to this
+``` 
+<Entry>
+	<content>Содержимое записи</content>
+	<creationDate>2014-01-01 00:00:00</creationDate> 
+</Entry>
+```
 ## 3. ISSUES, TIPS AND TRICKS 
 * If you struggle with run-scripts without any luck then you can just run application like
 > java -jar xmlparser-1.0-SNAPSHOT.jar --program_parameters
